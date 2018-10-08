@@ -1,10 +1,10 @@
 # Configure the AWS Provider
 provider "aws" {
-  region = "eu-west-1"
+  region = "${var.Region}"
 }
 
 resource "aws_vpc" "Myvpc" {
-  cidr_block       = "172.23.0.0/16"
+  cidr_block       = "${var.VPC_CIDR}"
   instance_tenancy = "dedicated"
 
   tags {
@@ -14,7 +14,7 @@ resource "aws_vpc" "Myvpc" {
 
 resource "aws_subnet" "MySubnet" {
   vpc_id     = "${aws_vpc.Myvpc.id}"
-  cidr_block = "172.23.1.0/24"
+  cidr_block = "${var.Subnet_CIDR}"
 
   tags {
     Name = "Subnet_D2SI"
@@ -33,7 +33,7 @@ resource "aws_route_table" "Myroutetable" {
   vpc_id = "${aws_vpc.Myvpc.id}"
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = "${var.Default_Route_CIDR}"
     gateway_id = "${aws_internet_gateway.Mygw.id}"
   }
 
