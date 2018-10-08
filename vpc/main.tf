@@ -20,3 +20,11 @@ resource "aws_subnet" "MySubnet" {
     Name = "Subnet_D2SI"
   }
 }
+
+resource "aws_internet_gateway" "Mygw" {
+  vpc_id = "${aws_vpc.Myvpc.id}"
+
+  tags {
+    Name = "IG_D2SI"
+  }
+}
