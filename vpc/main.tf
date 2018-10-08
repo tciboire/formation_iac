@@ -28,3 +28,16 @@ resource "aws_internet_gateway" "Mygw" {
     Name = "IG_D2SI"
   }
 }
+
+resource "aws_route_table" "Myroutetable" {
+  vpc_id = "${aws_vpc.Myvpc.id}"
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = "${aws_internet_gateway.Mygw.id}"
+  }
+
+  tags {
+    Name = "Routetable D2SI"
+  }
+}
