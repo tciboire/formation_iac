@@ -7,9 +7,14 @@ variable "VPC_CIDR" {
 }
 
 variable "Subnet_CIDR" {
-  type = "string"
+  type = "list"
 }
 
 variable "Default_Route_CIDR" {
   type = "string"
+}
+
+variable "Azs" {
+  type    = "list"
+  default = ["eu-west-1a", "eu-west-1b"]
 }
