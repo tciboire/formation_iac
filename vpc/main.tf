@@ -5,7 +5,7 @@ provider "aws" {
 
 resource "aws_vpc" "Myvpc" {
   cidr_block       = "${var.VPC_CIDR}"
-  instance_tenancy = "dedicated"
+  instance_tenancy = "default"
 
   tags {
     Name = "VPC_DS2SI"

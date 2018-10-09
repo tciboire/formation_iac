@@ -1,6 +1,9 @@
 variable "Region" {
   type = "string"
 }
+variable "VPC_NAME" { 
+type = "string"
+}
 
 variable "VPC_CIDR" {
   type = "string"
